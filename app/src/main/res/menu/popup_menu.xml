@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/opcion_vender_articulo"
+        android:title="Vender artículo" />
+    <item
+        android:id="@+id/opcion_mis_compras"
+        android:title="Mis compras" />
+    <item
+        android:id="@+id/opcion_mis_ventas"
+        android:title="Mis ventas" />
+</menu>

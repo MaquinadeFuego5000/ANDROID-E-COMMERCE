@@ -1,0 +1,189 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <!-- Encabezado gris -->
+    <View
+        android:id="@+id/encabezado"
+        android:layout_width="0dp"
+        android:layout_height="150dp"
+        android:background="#2F2F2F"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Campo de búsqueda (EditText) -->
+    <EditText
+        android:id="@+id/search_input"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        android:background="@android:color/white"
+        android:hint="Buscar..."
+        android:padding="10dp"
+        app:layout_constraintEnd_toStartOf="@+id/search_button"
+        app:layout_constraintStart_toStartOf="@id/encabezado"
+        app:layout_constraintTop_toTopOf="@id/encabezado" />
+
+    <!-- Icono de búsqueda -->
+    <ImageView
+        android:id="@+id/search_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="42dp"
+        android:layout_marginEnd="16dp"
+        android:src="@android:drawable/ic_menu_search"
+        app:layout_constraintEnd_toEndOf="@id/encabezado"
+        app:layout_constraintTop_toTopOf="@id/encabezado" />
+
+    <HorizontalScrollView
+        android:id="@+id/categories_scroll"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/search_input"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:id="@+id/categories_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/category_todo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="Todo"
+                android:textColor="#FFFFFF" />
+
+            <TextView
+                android:id="@+id/category_electronica"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="Electrónica"
+                android:textColor="#FFFFFF" />
+
+            <TextView
+                android:id="@+id/category_ropa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="Ropa"
+                android:textColor="#FFFFFF" />
+
+            <TextView
+                android:id="@+id/category_hogar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="Hogar"
+                android:textColor="#FFFFFF" />
+
+            <TextView
+                android:id="@+id/category_deportes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="Deportes"
+                android:textColor="#FFFFFF" />
+
+            <TextView
+                android:id="@+id/category_juguetes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Juguetes"
+                android:textColor="#FFFFFF" />
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <!-- RecyclerView debajo de las categorías -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="39dp"
+        app:layout_constraintBottom_toTopOf="@id/panel_inferior"
+        app:layout_constraintTop_toBottomOf="@id/categories_scroll"
+        app:layout_constraintVertical_bias="1.0"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <!-- Panel inferior -->
+    <LinearLayout
+        android:id="@+id/panel_inferior"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:background="#E0E0E0"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/icono1"
+                android:layout_width="wrap_content"
+                android:layout_height="24dp"
+                android:src="@drawable/home"
+                android:adjustViewBounds="true"
+                android:contentDescription="Icono de inicio" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Inicio"
+                android:textColor="#000000"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/icono2"
+            android:layout_width="0dp"
+            android:layout_height="24dp"
+            android:layout_weight="1"
+            android:src="@drawable/usuario"
+            android:layout_gravity="center"
+            android:adjustViewBounds="true"
+            android:contentDescription="Icono de usuario" />
+
+        <ImageView
+            android:id="@+id/icono3"
+            android:layout_width="0dp"
+            android:layout_height="24dp"
+            android:layout_weight="1"
+            android:src="@drawable/carrito"
+            android:layout_gravity="center"
+            android:adjustViewBounds="true"
+            android:contentDescription="Icono de carrito" />
+
+        <ImageView
+            android:id="@+id/icono_navegacion"
+            android:layout_width="0dp"
+            android:layout_height="24dp"
+            android:layout_weight="1"
+            android:src="@drawable/navegacion"
+            android:layout_gravity="center"
+            android:adjustViewBounds="true"
+            android:contentDescription="Icono de navegación" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
