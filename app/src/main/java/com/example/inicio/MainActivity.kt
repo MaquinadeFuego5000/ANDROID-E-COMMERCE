@@ -16,6 +16,8 @@ import androidx.recyclerview.widget.RecyclerView
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import android.content.Intent
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -60,9 +62,24 @@ class MainActivity : AppCompatActivity() {
         // Configurar botón de navegación
         setupNavigationButton()
 
+        // Configurar botón del carrito
+        setupCartButton() // Aquí agregamos la configuración del botón del carrito
+
         // Cargar los productos desde la API
         loadProducts()
     }
+
+    private fun setupCartButton() {
+        // Configurar el botón del carrito
+        val carritoButton: ImageView = findViewById(R.id.icono3)
+        carritoButton.setOnClickListener {
+            // Crear la intención para abrir la actividad del carrito
+            val intent = Intent(this, CarritoActivity::class.java)
+            startActivity(intent)  // Inicia la actividad del carrito
+        }
+    }
+
+
 
     private fun setupCategoryFilters() {
         // Configurar OnClickListeners para cada categoría

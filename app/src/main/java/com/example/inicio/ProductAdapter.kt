@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
+import java.text.Normalizer
 
 class ProductAdapter(private val products: List<Product>) : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
 
@@ -38,24 +39,34 @@ class ProductAdapter(private val products: List<Product>) : RecyclerView.Adapter
         // Carga de la imagen con Picasso
         Picasso.get()
             .load(product.imagen)
-            .error(R.drawable.error_image) // Imagen de error si la carga falla
+            .resize(200, 200) // Redimensionar la imagen si es necesario
+            .centerCrop() // Opcional, dependiendo de cómo quieres que se muestre
+            .error(R.drawable.error_image)
             .into(holder.productImage)
+
     }
 
     override fun getItemCount(): Int {
         return filteredList.size
     }
 
+    // Función para eliminar acentos de una cadena de texto
+    private fun removeAccents(text: String): String {
+        return Normalizer.normalize(text, Normalizer.Form.NFD)
+            .replace(Regex("\\p{InCombiningDiacriticalMarks}+"), "")
+    }
+
     // Método para filtrar productos
     fun filter(query: String) {
-        // Eliminar comas y espacios en blanco de la cadena de búsqueda
-        val cleanedQuery = query.replace(",", "").trim()
+        // Eliminar comas, espacios en blanco y acentos de la cadena de búsqueda
+        val cleanedQuery = removeAccents(query.replace(",", "").trim())
 
         filteredList = if (cleanedQuery.isEmpty()) {
             products // Si la búsqueda está vacía, muestra todos
         } else {
             products.filter {
-                it.nombre_producto.contains(cleanedQuery, ignoreCase = true) // Filtra por nombre
+                // Filtra comparando la cadena sin acentos
+                removeAccents(it.nombre_producto).contains(cleanedQuery, ignoreCase = true)
             }
         }
         notifyDataSetChanged() // Notifica al adaptador que los datos han cambiado

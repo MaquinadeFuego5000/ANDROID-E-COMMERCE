@@ -25,10 +25,11 @@
             </intent-filter>
         </activity>
 
-        <!-- Agrega aquí la nueva actividad OpcionesVendedor -->
+        <!-- Declarar la actividad del carrito -->
         <activity
-            android:name=".OpcionesVendedor"
-            android:exported="true" />
+            android:name=".CarritoActivity"
+            android:exported="true">
+        </activity>
 
     </application>
 
