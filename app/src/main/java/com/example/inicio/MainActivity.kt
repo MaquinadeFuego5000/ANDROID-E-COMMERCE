@@ -1,5 +1,6 @@
 package com.example.inicio
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -16,8 +17,6 @@ import androidx.recyclerview.widget.RecyclerView
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import android.content.Intent
-
 
 class MainActivity : AppCompatActivity() {
 
@@ -28,6 +27,18 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Verificar si el usuario está autenticado
+        val sharedPreferences = getSharedPreferences("user_prefs", MODE_PRIVATE)
+        val isLoggedIn = sharedPreferences.getBoolean("is_logged_in", false)
+
+        if (!isLoggedIn) {
+            // Redirigir a LoginActivity si no está autenticado
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
+            return
+        }
 
         // Habilitar el modo edge-to-edge
         WindowCompat.setDecorFitsSystemWindows(window, false)
@@ -44,45 +55,35 @@ class MainActivity : AppCompatActivity() {
         // Inicializar campo de búsqueda
         searchInput = findViewById(R.id.search_input)
 
-        // Configura el campo de búsqueda
+        // Configurar el campo de búsqueda
         searchInput.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                productAdapter.filter(s.toString()) // Filtra los productos según el texto ingresado
+                productAdapter.filter(s.toString())
             }
             override fun afterTextChanged(s: Editable?) {}
         })
 
-        // Configurar filtros de categoría
+        // Configurar botones y filtros
         setupCategoryFilters()
-
-        // Configurar botón de inicio
         setupHomeButton()
-
-        // Configurar botón de navegación
         setupNavigationButton()
-
-        // Configurar botón del carrito
-        setupCartButton() // Aquí agregamos la configuración del botón del carrito
+        setupCartButton()
+        setupProfileButton() // Configurar el botón de perfil
 
         // Cargar los productos desde la API
         loadProducts()
     }
 
     private fun setupCartButton() {
-        // Configurar el botón del carrito
         val carritoButton: ImageView = findViewById(R.id.icono3)
         carritoButton.setOnClickListener {
-            // Crear la intención para abrir la actividad del carrito
             val intent = Intent(this, CarritoActivity::class.java)
-            startActivity(intent)  // Inicia la actividad del carrito
+            startActivity(intent)
         }
     }
 
-
-
     private fun setupCategoryFilters() {
-        // Configurar OnClickListeners para cada categoría
         findViewById<TextView>(R.id.category_todo).setOnClickListener { showAllProducts() }
         findViewById<TextView>(R.id.category_electronica).setOnClickListener { filterByCategory(1) }
         findViewById<TextView>(R.id.category_ropa).setOnClickListener { filterByCategory(2) }
@@ -91,10 +92,17 @@ class MainActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.category_juguetes).setOnClickListener { filterByCategory(5) }
     }
 
+    private fun setupProfileButton() {
+        val profileButton: ImageView = findViewById(R.id.icono2) // Cambia "icono_perfil" por el ID real de tu botón/ícono
+        profileButton.setOnClickListener {
+            val intent = Intent(this, UsuarioInfoActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
     private fun showAllProducts() {
-        // Muestra todos los productos en el adaptador
         productAdapter.updateProducts(products)
-        productAdapter.notifyDataSetChanged() // Notificar al adaptador que los datos han cambiado
+        productAdapter.notifyDataSetChanged()
     }
 
     private fun filterByCategory(categoryId: Int) {
@@ -106,24 +114,19 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupHomeButton() {
-        // Configurar el botón de inicio
         val homeButton: ImageView = findViewById(R.id.icono1)
         homeButton.setOnClickListener {
-            // Volver al inicio del RecyclerView
             recyclerView.scrollToPosition(0)
             Toast.makeText(this, "Volviendo al inicio", Toast.LENGTH_SHORT).show()
         }
     }
 
     private fun setupNavigationButton() {
-        // Configurar el botón de navegación
         val iconoNavegacion: ImageView = findViewById(R.id.icono_navegacion)
         iconoNavegacion.setOnClickListener {
-            // Crear el PopupMenu
             val popupMenu = PopupMenu(this, iconoNavegacion)
             popupMenu.menuInflater.inflate(R.menu.popup_menu, popupMenu.menu)
 
-            // Configurar acciones para cada opción del menú
             popupMenu.setOnMenuItemClickListener { item ->
                 when (item.itemId) {
                     R.id.opcion_vender_articulo -> {
@@ -142,25 +145,18 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
-            // Mostrar el menú
             popupMenu.show()
         }
     }
 
     private fun loadProducts() {
-        // Llamada a la API para obtener los productos
         RetrofitClient.apiService.getProducts().enqueue(object : Callback<List<Product>> {
             override fun onResponse(call: Call<List<Product>>, response: Response<List<Product>>) {
                 if (response.isSuccessful) {
-                    val fetchedProducts = response.body()
-                    fetchedProducts?.let {
-                        // Actualizar la lista de productos y notificar al adaptador
-                        products.clear() // Limpia la lista antes de agregar nuevos productos
+                    response.body()?.let {
+                        products.clear()
                         products.addAll(it)
-                        Log.d("MainActivity", "Fetched Products: $it")
-                        productAdapter.notifyDataSetChanged() // Notificar al adaptador que los datos han cambiado
-                    } ?: run {
-                        Toast.makeText(this@MainActivity, "No se encontraron productos", Toast.LENGTH_SHORT).show()
+                        productAdapter.notifyDataSetChanged()
                     }
                 } else {
                     Toast.makeText(this@MainActivity, "Error: ${response.code()}", Toast.LENGTH_SHORT).show()
@@ -169,7 +165,6 @@ class MainActivity : AppCompatActivity() {
 
             override fun onFailure(call: Call<List<Product>>, t: Throwable) {
                 Toast.makeText(this@MainActivity, "Fallo en la conexión: ${t.message}", Toast.LENGTH_SHORT).show()
-                Log.e("MainActivity", "Error fetching products: ${t.message}")
             }
         })
     }

@@ -2,4 +2,8 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="primaryTextColor">#333333</color> <!-- Color letras de login-->
+    <color name="linkColor">#2979FF</color> <!-- texto de "Registrarse" -->
+    <color name="buttonColor">#373332</color> <!-- para el botón -->
 </resources>
+
