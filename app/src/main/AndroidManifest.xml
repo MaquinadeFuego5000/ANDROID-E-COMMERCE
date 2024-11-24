@@ -33,17 +33,17 @@
 
         <!-- Registrar la actividad de registro -->
         <activity
-            android:name=".RegisterActivity"
+            android:name=".com.example.inicio.registromenu.RegisterActivity"
             android:exported="true">
         </activity>
 
         <!-- Registrar la actividad de inicio de sesión -->
         <activity
-            android:name=".LoginActivity"
+            android:name=".com.example.inicio.loginmenu.LoginActivity"
             android:exported="true">
         </activity>
         <activity
-            android:name=".UsuarioInfoActivity"
+            android:name=".com.example.inicio.usuariomenu.UsuarioInfoActivity"
             android:exported="true">
         </activity>
 

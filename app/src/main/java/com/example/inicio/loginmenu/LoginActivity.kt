@@ -1,4 +1,4 @@
-package com.example.inicio
+package com.example.inicio.com.example.inicio.loginmenu
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,8 +6,10 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.inicio.com.example.inicio.LoginRequest
-import com.example.inicio.com.example.inicio.LoginResponse
+import com.example.inicio.MainActivity
+import com.example.inicio.R
+import com.example.inicio.RetrofitClient
+import com.example.inicio.com.example.inicio.registromenu.RegisterActivity
 import com.google.android.material.textfield.TextInputEditText
 import retrofit2.Call
 import retrofit2.Callback

@@ -1,4 +1,4 @@
-package com.example.inicio.com.example.inicio
+package com.example.inicio.com.example.inicio.usuariomenu
 
 // Definir el modelo de datos para la actualización
 data class UsuarioActualizar(

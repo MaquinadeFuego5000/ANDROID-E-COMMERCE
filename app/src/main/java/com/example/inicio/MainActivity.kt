@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.PopupMenu
@@ -14,6 +13,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.inicio.com.example.inicio.loginmenu.LoginActivity
+import com.example.inicio.com.example.inicio.usuariomenu.UsuarioInfoActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

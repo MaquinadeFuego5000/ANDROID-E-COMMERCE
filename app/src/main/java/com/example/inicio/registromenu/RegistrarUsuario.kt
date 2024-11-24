@@ -1,4 +1,4 @@
-package com.example.inicio.com.example.inicio
+package com.example.inicio.com.example.inicio.registromenu
 
 data class RegistrarUsuario(
     val nombre: String,
