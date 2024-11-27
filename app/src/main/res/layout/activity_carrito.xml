@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#f4f4f9"
-    tools:context=".CarritoActivity">
+    tools:context=".com.example.inicio.carritomenu.CarritoActivity">
 
 
     <ImageButton

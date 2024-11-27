@@ -1,4 +1,4 @@
-package com.example.inicio.com.example.inicio.registromenu
+package com.example.inicio.registromenu
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,12 +6,15 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.inicio.com.example.inicio.loginmenu.LoginActivity
+import com.example.inicio.loginmenu.LoginActivity
 import com.example.inicio.R
 import com.example.inicio.RetrofitClient
+import com.example.inicio.com.example.inicio.registromenu.RegisterResponse
+import com.example.inicio.com.example.inicio.registromenu.RegistrarUsuario
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+
 
 class RegisterActivity : AppCompatActivity() {
 

@@ -27,25 +27,34 @@
 
         <!-- Declarar la actividad del carrito -->
         <activity
-            android:name=".CarritoActivity"
+            android:name=".com.example.inicio.carritomenu.CarritoActivity"
             android:exported="true">
         </activity>
 
         <!-- Registrar la actividad de registro -->
         <activity
-            android:name=".com.example.inicio.registromenu.RegisterActivity"
+            android:name=".registromenu.RegisterActivity"
             android:exported="true">
         </activity>
 
         <!-- Registrar la actividad de inicio de sesión -->
         <activity
-            android:name=".com.example.inicio.loginmenu.LoginActivity"
+            android:name=".loginmenu.LoginActivity"
             android:exported="true">
         </activity>
+
+        <!-- Registrar la actividad de información de usuario -->
         <activity
-            android:name=".com.example.inicio.usuariomenu.UsuarioInfoActivity"
+            android:name=".usuariomenu.UsuarioInfoActivity"
             android:exported="true">
         </activity>
+
+        <!-- Registrar la actividad que el usuario vea sus compras -->
+        <activity
+            android:name=".com.example.inicio.miscompras.MisComprasActivity"
+            android:exported="true">
+        </activity>
+
 
 
     </application>

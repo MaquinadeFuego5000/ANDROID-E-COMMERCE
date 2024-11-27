@@ -1,4 +1,4 @@
-package com.example.inicio.com.example.inicio.loginmenu
+package com.example.inicio.loginmenu
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,7 +9,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.inicio.MainActivity
 import com.example.inicio.R
 import com.example.inicio.RetrofitClient
-import com.example.inicio.com.example.inicio.registromenu.RegisterActivity
+import com.example.inicio.com.example.inicio.loginmenu.LoginRequest
+import com.example.inicio.com.example.inicio.loginmenu.LoginResponse
+import com.example.inicio.registromenu.RegisterActivity
 import com.google.android.material.textfield.TextInputEditText
 import retrofit2.Call
 import retrofit2.Callback

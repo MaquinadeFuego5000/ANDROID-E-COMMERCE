@@ -13,8 +13,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.inicio.com.example.inicio.loginmenu.LoginActivity
-import com.example.inicio.com.example.inicio.usuariomenu.UsuarioInfoActivity
+import com.example.inicio.com.example.inicio.carritomenu.CarritoActivity
+import com.example.inicio.loginmenu.LoginActivity
+import com.example.inicio.usuariomenu.UsuarioInfoActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -50,7 +51,7 @@ class MainActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         // Inicializar el adaptador con la lista de productos
-        productAdapter = ProductAdapter(products)
+        productAdapter = ProductAdapter(products, this) // Pasamos el contexto correctamente
         recyclerView.adapter = productAdapter
 
         // Inicializar campo de búsqueda
