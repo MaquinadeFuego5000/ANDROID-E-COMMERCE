@@ -7,6 +7,8 @@ import com.example.inicio.com.example.inicio.carritomenu.CompraExitosaResponse
 
 import com.example.inicio.com.example.inicio.loginmenu.LoginRequest
 import com.example.inicio.com.example.inicio.loginmenu.LoginResponse
+import com.example.inicio.com.example.inicio.miscompras.PedidosRequest
+import com.example.inicio.com.example.inicio.miscompras.PedidosResponse
 import com.example.inicio.com.example.inicio.registromenu.RegisterResponse
 import com.example.inicio.com.example.inicio.registromenu.RegistrarUsuario
 import com.example.inicio.com.example.inicio.usuariomenu.UsuarioActualizacionResponse
@@ -98,7 +100,8 @@ interface ApiService {
 
     //-----------Fin de las operaciones del carrito---------------------------------------------//
 
-
+    @POST("Android/mis-compras.php")
+    fun obtenerPedidos(@Body request: PedidosRequest): Call<PedidosResponse>
 
 }
 

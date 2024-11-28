@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.inicio.R
 
+
 class CarritoAdapter(private val listaProductos: List<ProductoCarrito>, private val listener: OnItemClickListener) : RecyclerView.Adapter<CarritoAdapter.CarritoViewHolder>() {
 
     interface OnItemClickListener {

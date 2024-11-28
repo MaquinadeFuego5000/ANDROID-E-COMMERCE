@@ -1,94 +1,33 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="16dp"
-    android:background="?android:attr/selectableItemBackground"
-    android:layout_marginBottom="8dp">
+    android:orientation="horizontal"
+    android:padding="8dp"
+    android:background="?android:attr/selectableItemBackground">
 
-    <!-- Título con el número de pedido -->
+    <ImageView
+        android:id="@+id/ivProductoImagen"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/placeholder_image"
+        android:layout_marginEnd="12dp"/>
+
+    <!-- Nombre del Producto -->
     <TextView
-        android:id="@+id/textViewPedidoNumero"
+        android:id="@+id/tvProductoNombre"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Producto A"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"/>
+
+
+    <TextView
+        android:id="@+id/tvCantidadPrecio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Pedido #12345"
-        android:textSize="18sp"
-        android:textColor="#333" />
-
-    <!-- Fecha de la compra -->
-    <TextView
-        android:id="@+id/textViewFecha"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Fecha: 2024-11-25"
-        android:textSize="14sp"
-        android:textColor="#777" />
-
-    <!-- Total de la compra -->
-    <TextView
-        android:id="@+id/textViewTotal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Total: $100.00"
-        android:textSize="16sp"
-        android:textColor="#000" />
-
-    <!-- Estado del pedido -->
-    <TextView
-        android:id="@+id/textViewEstado"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Estado: Enviado"
-        android:textSize="14sp"
-        android:textColor="#008000"
-        android:layout_marginTop="4dp" />
-
-    <!-- Lista de productos -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="8dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingTop="8dp">
-
-            <ImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:src="@drawable/placeholder_image"
-                android:contentDescription="Producto"
-                android:layout_gravity="center_vertical"
-                android:layout_marginEnd="16dp" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Nombre del Producto"
-                android:textSize="14sp"
-                android:textColor="#333"
-                android:layout_gravity="center_vertical" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Cantidad: 2"
-                android:textSize="14sp"
-                android:textColor="#333"
-                android:layout_gravity="center_vertical" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="$50.00"
-                android:textSize="14sp"
-                android:textColor="#333"
-                android:layout_gravity="center_vertical" />
-        </LinearLayout>
-    </LinearLayout>
+        android:text="Cantidad: 1\n$99.99"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"/>
 </LinearLayout>

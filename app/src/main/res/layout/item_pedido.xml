@@ -1,0 +1,83 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@drawable/border"
+    android:layout_marginBottom="12dp"
+    android:elevation="4dp"
+    android:clipToPadding="false">
+
+    <TextView
+        android:id="@+id/tvIdPedido"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ID Pedido: "
+        android:textSize="18sp" 
+        android:textColor="#1976D2"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="sans-serif-medium"
+        android:textStyle="bold"
+        android:shadowColor="#888888"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="3"/>
+
+
+    <!-- Fecha del Pedido -->
+    <TextView
+        android:id="@+id/tvFechaPedido"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fecha del pedido: "
+        android:textColor="#5A5A5A"
+        android:textSize="16sp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="sans-serif-light"
+        android:shadowColor="#888888"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="2"/>
+
+    <!-- Monto Total -->
+    <TextView
+        android:id="@+id/tvMontoTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total: $0.00"
+        android:textColor="#4CAF50"
+    android:textSize="18sp"
+    android:layout_marginBottom="12dp"
+    android:fontFamily="sans-serif-medium"
+    android:textStyle="bold"
+    android:shadowColor="#888888"
+    android:shadowDx="1"
+    android:shadowDy="1"
+    android:shadowRadius="2"/>
+
+    <!-- Estado del Pedido -->
+    <TextView
+        android:id="@+id/tvEstado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Estado: "
+        android:textColor="#4B4B4B"
+        android:textSize="16sp"
+        android:background="@drawable/estado_background"
+        android:padding="10dp"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="sans-serif-medium"
+        android:textStyle="bold"
+        android:shadowColor="#888888"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="2"/>
+
+
+    <!-- Lista de Productos del Pedido -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvProductos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp" />
+</LinearLayout>

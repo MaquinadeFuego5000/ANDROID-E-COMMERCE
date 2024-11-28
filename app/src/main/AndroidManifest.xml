@@ -51,7 +51,7 @@
 
         <!-- Registrar la actividad que el usuario vea sus compras -->
         <activity
-            android:name=".com.example.inicio.miscompras.MisComprasActivity"
+            android:name=".miscompras.MisComprasActivity"
             android:exported="true">
         </activity>
 
