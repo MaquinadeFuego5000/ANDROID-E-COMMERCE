@@ -13,7 +13,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.inicio.com.example.inicio.VenderArticuloActivity
 import com.example.inicio.com.example.inicio.carritomenu.CarritoActivity
+import com.example.inicio.com.example.inicio.misventas.MisVentasActivity
 import com.example.inicio.miscompras.MisComprasActivity
 import com.example.inicio.loginmenu.LoginActivity
 import com.example.inicio.usuariomenu.UsuarioInfoActivity
@@ -134,26 +136,30 @@ class MainActivity : AppCompatActivity() {
                 when (item.itemId) {
                     R.id.opcion_vender_articulo -> {
                         Toast.makeText(this, "Opción: Vender artículo", Toast.LENGTH_SHORT).show()
+                        // Crear un intent para abrir la nueva actividad
+                        val intent = Intent(this, VenderArticuloActivity::class.java)
+                        startActivity(intent)
                         true
                     }
                     R.id.opcion_mis_compras -> {
-                        // Iniciar la actividad de "Mis Compras"
                         val intent = Intent(this, MisComprasActivity::class.java)
                         startActivity(intent)
                         true
                     }
-
                     R.id.opcion_mis_ventas -> {
-                        Toast.makeText(this, "Opción: Mis ventas", Toast.LENGTH_SHORT).show()
+                        val intent = Intent(this, MisVentasActivity::class.java)
+                        startActivity(intent)
                         true
                     }
-                    else -> false
+                    else -> false // Maneja cualquier otro caso no definido
                 }
             }
+
 
             popupMenu.show()
         }
     }
+
 
     private fun loadProducts() {
         RetrofitClient.apiService.getProducts().enqueue(object : Callback<List<Product>> {

@@ -55,6 +55,20 @@
             android:exported="true">
         </activity>
 
+        <!-- Registrar la actividad que el usuario vea sus ventas-->
+        <activity
+            android:name=".com.example.inicio.misventas.MisVentasActivity"
+            android:exported="true">
+        </activity>
+
+        <!-- Registrar la actividad que el usuario vea sus ventas-->
+        <activity
+            android:name=".VenderArticuloActivity"
+            android:exported="true">
+        </activity>
+
+
+
 
 
     </application>

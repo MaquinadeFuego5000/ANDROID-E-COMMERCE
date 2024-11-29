@@ -1,16 +1,19 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:padding="8dp"
-    android:background="?android:attr/selectableItemBackground">
+    android:background="#F5F5F5">
 
     <ImageView
         android:id="@+id/ivProductoImagen"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:src="@drawable/placeholder_image"
-        android:layout_marginEnd="12dp"/>
+        android:layout_marginEnd="12dp"
+        android:background="#D3D3D3"
+        android:scaleType="centerCrop" />
 
     <!-- Nombre del Producto -->
     <TextView
@@ -19,15 +22,17 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="Producto A"
-        android:textColor="@android:color/black"
-        android:textSize="14sp"/>
+        android:textColor="#FF5722"
+    android:textSize="14sp"
+    android:fontFamily="sans-serif-medium" />
 
-
+    <!-- Cantidad y Precio -->
     <TextView
         android:id="@+id/tvCantidadPrecio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cantidad: 1\n$99.99"
-        android:textColor="@android:color/black"
-        android:textSize="14sp"/>
+        android:textColor="#5D5D5D"
+        android:textSize="14sp"
+        android:fontFamily="sans-serif-light" />
 </LinearLayout>

@@ -1,5 +1,7 @@
 package com.example.inicio // Asegúrate de que este paquete coincide con tu proyecto
 
+import com.example.inicio.com.example.inicio.misventas.RespuestaVentas
+import com.example.inicio.com.example.inicio.misventas.VentasRequest
 import com.example.inicio.com.example.inicio.carritomenu.ActualizarCantidadRequest
 import com.example.inicio.com.example.inicio.carritomenu.ApiResponse
 import com.example.inicio.com.example.inicio.carritomenu.CarritoResponse
@@ -102,6 +104,9 @@ interface ApiService {
 
     @POST("Android/mis-compras.php")
     fun obtenerPedidos(@Body request: PedidosRequest): Call<PedidosResponse>
+
+    @POST("Android/mis-ventas.php")
+    fun obtenerVentas(@Body ventasRequest: VentasRequest): Call<RespuestaVentas>
 
 }
 
