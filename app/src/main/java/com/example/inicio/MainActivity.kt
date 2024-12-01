@@ -13,7 +13,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.inicio.com.example.inicio.VenderArticuloActivity
 import com.example.inicio.com.example.inicio.carritomenu.CarritoActivity
 import com.example.inicio.com.example.inicio.misventas.MisVentasActivity
 import com.example.inicio.miscompras.MisComprasActivity
@@ -135,7 +134,7 @@ class MainActivity : AppCompatActivity() {
             popupMenu.setOnMenuItemClickListener { item ->
                 when (item.itemId) {
                     R.id.opcion_vender_articulo -> {
-                        Toast.makeText(this, "Opción: Vender artículo", Toast.LENGTH_SHORT).show()
+
                         // Crear un intent para abrir la nueva actividad
                         val intent = Intent(this, VenderArticuloActivity::class.java)
                         startActivity(intent)

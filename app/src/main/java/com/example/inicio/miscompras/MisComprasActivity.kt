@@ -1,6 +1,7 @@
 package com.example.inicio.miscompras
 
 import MisComprasAdapter
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Toast
@@ -9,10 +10,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.inicio.R
 import com.example.inicio.RetrofitClient
-
 import com.example.inicio.ApiService
 import com.example.inicio.com.example.inicio.miscompras.PedidosRequest
 import com.example.inicio.com.example.inicio.miscompras.PedidosResponse
+import com.example.inicio.loginmenu.LoginActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -26,8 +27,12 @@ class MisComprasActivity : AppCompatActivity() {
         // Obtener el session_token desde SharedPreferences
         val sessionToken = obtenerSessionToken()
 
+        // Verificar si hay sesión activa
         if (sessionToken.isBlank()) {
-            showError("No hay sesión activa. Inicia sesión.")
+            // Redirigir a LoginActivity si no hay sesión activa
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            finish() // Cerrar esta actividad
             return
         }
 

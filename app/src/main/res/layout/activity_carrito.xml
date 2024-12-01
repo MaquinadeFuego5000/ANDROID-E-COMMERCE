@@ -10,17 +10,17 @@
     tools:context=".com.example.inicio.carritomenu.CarritoActivity">
 
 
+    <!-- Botón de regreso -->
     <ImageButton
         android:id="@+id/buttonBack"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:layout_margin="1dp"
+        android:layout_margin="16dp"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:contentDescription="Regresar"
         app:srcCompat="@drawable/baseline_arrow_back_ios_24"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <!-- Título-->
     <TextView

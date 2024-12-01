@@ -16,6 +16,9 @@ import com.example.inicio.com.example.inicio.registromenu.RegistrarUsuario
 import com.example.inicio.com.example.inicio.usuariomenu.UsuarioActualizacionResponse
 import com.example.inicio.com.example.inicio.usuariomenu.UsuarioActualizar
 import com.example.inicio.com.example.inicio.usuariomenu.UsuarioResponse
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.Body
@@ -23,8 +26,10 @@ import retrofit2.http.DELETE
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
+import retrofit2.http.Multipart
 import retrofit2.http.POST
 import retrofit2.http.PUT
+import retrofit2.http.Part
 import retrofit2.http.Query
 
 interface ApiService {
@@ -101,12 +106,31 @@ interface ApiService {
         ): Response<CompraExitosaResponse>
 
     //-----------Fin de las operaciones del carrito---------------------------------------------//
+    //-----------Vistas de historiales---------------------------------------------------------//
 
     @POST("Android/mis-compras.php")
     fun obtenerPedidos(@Body request: PedidosRequest): Call<PedidosResponse>
 
     @POST("Android/mis-ventas.php")
     fun obtenerVentas(@Body ventasRequest: VentasRequest): Call<RespuestaVentas>
+    //----------Fin de las vistas--------------------------------------------------------------//
+
+    //------------inserta aqui la llamada a mi api publicar-articulo.php-----------------------//
+// Publicar un artículo
+    @Multipart
+    @POST("Android/publicar-articulo.php")
+    suspend fun subirProducto(
+        @Part("session_token") sessionToken: RequestBody, // Añadir session_token
+        @Part("nombre_producto") nombre: RequestBody,
+        @Part("descripcion") descripcion: RequestBody,
+        @Part("precio") precio: RequestBody,
+        @Part("stock") stock: RequestBody,
+        @Part("id_categoria") categoria: RequestBody,
+        @Part imagen: MultipartBody.Part
+    ): Response<ResponseBody>
+
+
+
 
 }
 

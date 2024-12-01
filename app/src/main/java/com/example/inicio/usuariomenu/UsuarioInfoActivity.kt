@@ -18,7 +18,6 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-
 class UsuarioInfoActivity : AppCompatActivity() {
 
     private lateinit var sharedPreferences: SharedPreferences
@@ -37,6 +36,7 @@ class UsuarioInfoActivity : AppCompatActivity() {
         val etCurrentPassword: EditText = findViewById(R.id.etCurrentPassword)
         val etNewPassword: EditText = findViewById(R.id.etNewPassword)
         val btnSave: Button = findViewById(R.id.btnSave)
+        val buttonBack: ImageButton = findViewById(R.id.buttonBack) // Button to go back
         message = findViewById(R.id.message)
 
         sharedPreferences = getSharedPreferences("user_prefs", MODE_PRIVATE)
@@ -70,6 +70,11 @@ class UsuarioInfoActivity : AppCompatActivity() {
                 )
                 updateUser(userId, userToUpdate)
             }
+        }
+
+        // Back button functionality
+        buttonBack.setOnClickListener {
+            redirectToMain()
         }
     }
 
@@ -155,8 +160,6 @@ class UsuarioInfoActivity : AppCompatActivity() {
             showToast("Error al actualizar la información.")
         }
     }
-
-
 
     private fun redirectToLogin() {
         Toast.makeText(this, "ID de usuario no encontrado. Redirigiendo al inicio de sesión.", Toast.LENGTH_SHORT).show()

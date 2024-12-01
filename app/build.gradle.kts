@@ -6,12 +6,12 @@ plugins {
 
 android {
     namespace = "com.example.inicio"
-    compileSdk = 35
+    compileSdk = 33  // Cambié a 33 para estar alineado con los requisitos de Google Play
 
     defaultConfig {
         applicationId = "com.example.inicio"
         minSdk = 24
-        targetSdk = 35
+        targetSdk = 33  // Cambié a 33 para cumplir con los requisitos de Google Play
         versionCode = 1
         versionName = "1.0"
 

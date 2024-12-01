@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.inicio.MainActivity
 import com.example.inicio.R
 import com.example.inicio.RetrofitClient
+import com.example.inicio.loginmenu.LoginActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -28,12 +30,22 @@ class CarritoActivity : AppCompatActivity(), CarritoAdapter.OnItemClickListener 
     private lateinit var textTotal: TextView
     private lateinit var buttonClearCart: Button
     private lateinit var buttonProceedToPayment: Button
+    private lateinit var buttonBack: ImageButton // Añadimos el botón de regreso
 
     private val listaProductos = mutableListOf<ProductoCarrito>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_carrito)
+
+        // Verificar si hay una sesión activa, si no redirigir al LoginActivity
+        val sessionToken = obtenerSessionToken()
+        if (sessionToken.isBlank()) {
+            val intent = Intent(this@CarritoActivity, LoginActivity::class.java)
+            startActivity(intent)
+            finish()  // Cerrar esta actividad
+            return
+        }
 
         setupViews()
         setupRecyclerView()
@@ -189,6 +201,7 @@ class CarritoActivity : AppCompatActivity(), CarritoAdapter.OnItemClickListener 
         textTotal = findViewById(R.id.textTotal)
         buttonClearCart = findViewById(R.id.buttonClearCart)
         buttonProceedToPayment = findViewById(R.id.buttonCheckout)
+        buttonBack = findViewById(R.id.buttonBack) // Inicializamos el botón de regreso
     }
 
     private fun setupRecyclerView() {
@@ -200,6 +213,7 @@ class CarritoActivity : AppCompatActivity(), CarritoAdapter.OnItemClickListener 
     private fun setupListeners() {
         buttonClearCart.setOnClickListener { vaciarCarrito() }
         buttonProceedToPayment.setOnClickListener { procederAlPago() }
+        buttonBack.setOnClickListener { onBackPressed() } // Acción para regresar al MainActivity
     }
 
     private fun obtenerSessionToken(): String {
